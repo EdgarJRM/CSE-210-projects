@@ -6,7 +6,9 @@ namespace Unit02
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hilo");
+            Hilo hilo = new Hilo();
+            hilo.StartGame();
         }
     }
 }
