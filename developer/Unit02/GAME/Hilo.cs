@@ -10,21 +10,20 @@ namespace Unit02.Game
     /// The responsibility of a Director is to control the sequence of play.
     /// </summary>
     public class Hilo{
-        List<Hilo> _dice = new List<Hilo>();
         bool _isPlaying = true;
-        int _score = 0;
-        int _totalScore = 0;
+        int _score = 100;
+        int _card1 = 0;
+        int _card2 = 0;
+        string chosenCard = "";
 
         /// <summary>
         /// Constructs a new instance of Director.
         /// </summary>
-        public Hilo()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                Hilo die = new Hilo();
-                _dice.Add(die);
-            }
+        public Hilo(){
+            Cards cards1 = new Cards();
+            _card1 = cards1.draw();
+            _card2 = cards1.draw();
+ 
         }
 
         /// <summary>
@@ -43,11 +42,12 @@ namespace Unit02.Game
         /// <summary>
         /// Asks the user if they want to roll.
         /// </summary>
-        public void GetInputs()
-        {
-            Console.Write("Roll dice? [y/n] ");
-            string rollDice = Console.ReadLine();
-            _isPlaying = (rollDice == "y");
+        public void GetInputs(){
+            Console.WriteLine($"The card is: {_card1}");
+            Console.Write("Higher or Lower? [h/l] ");
+            chosenCard = Console.ReadLine();
+            Console.WriteLine($"The new card is: {_card2}");
+            _isPlaying = (chosenCard == "h" || chosenCard == "l");
         }
 
         /// <summary>
@@ -60,34 +60,45 @@ namespace Unit02.Game
                 return;
             }
 
-            _score = 0;
-            foreach (Hilo die in _dice)
-            {
-                die.Roll();
-                _score += die._points;
+            if (_card1 < _card2 && chosenCard == "h"){
+                Console.WriteLine("Elección correcta");
+                _score += 100;
+
+            }else if (_card1 > _card2 && chosenCard == "l"){
+                Console.WriteLine("Elección correcta");
+                _score += 100;
+
+            }else{
+                Console.WriteLine("Elección incorrecta");
+                _score = _score - 75;
             }
-            _totalScore += _score;
+            Console.WriteLine($"You score is: {_score}");
         }
 
         /// <summary>
         /// Displays the dice and the score. Also asks the player if they want to roll again. 
         /// </summary>
-        public void DoOutputs()
-        {
-            if (!_isPlaying)
-            {
+        public void DoOutputs(){
+            if (_score <= 0){
+                _isPlaying = false;
+                Console.WriteLine("Game Over");
+            }
+
+            if (!_isPlaying){
                 return;
             }
 
             string values = "";
-            foreach (Hilo die in _dice)
-            {
-                values += $"{die._value} ";
-            }
-
-            Console.WriteLine($"You rolled: {values}");
-            Console.WriteLine($"Your score is: {_totalScore}\n");
-            _isPlaying = (_score > 0);
+            Console.Write("Play again? [y/n] ");
+            values = Console.ReadLine();
+            if (values == "y"){
+                _card1  = _card2;
+                Cards cards1 = new Cards();
+                _card2 = cards1.draw();
+            }else if (values == "n"){
+                _isPlaying = false;
+                Console.WriteLine("Game Over");
+            }            
         }
     }
 }
