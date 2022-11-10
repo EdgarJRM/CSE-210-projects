@@ -16,16 +16,29 @@ namespace Unit05.Game.Scripting
     /// </para>
     /// </summary>
 
-    // 2) Create the class constructor. Use the following method comment.
+     public class MoveActorsAction : Action{
+        
+        // 2) Create the class constructor. Use the following method comment.
 
-    /// <summary>
-    /// Constructs a new instance of MoveActorsAction.
-    /// </summary>
+        /// <summary>
+        /// Constructs a new instance of MoveActorsAction.
+        /// </summary>
+       public MoveActorsAction(){
+        }
 
-    // 3) Override the Execute(Cast cast, Script script) method. Use the following 
-    //    method comment. You custom implementation should do the following:
-    //    a) get all the actors from the cast
-    //    b) loop through all the actors
-    //    c) call the MoveNext() method on each actor.
+        // 3) Override the Execute(Cast cast, Script script) method. Use the following 
+        //    method comment. 
+        public void Execute(Cast cast, Script script){
+            //    You custom implementation should do the following:
+            //    a) get all the actors from the cast
+            //    b) loop through all the actors
+            //    c) call the MoveNext() method on each actor.
+            List<Actor> actors = cast.GetAllActors();
+            foreach (Actor actor in actors)
+            {
+                actor.MoveNext();
+            }
+        }
+    }
 
 }
