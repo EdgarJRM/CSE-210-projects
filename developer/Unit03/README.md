@@ -1,12 +1,12 @@
 # Jumper
-Jumper se juega de acuerdo con las siguientes reglas.
+Jumper is played according to the following rules..
 
-* El rompecabezas es una palabra secreta elegida al azar de una lista.
-* El jugador adivina una letra en el rompecabezas.
-* Si la conjetura es correcta, se revela la letra.
-* Si la suposición es incorrecta, se corta una línea en el paracaídas del jugador.
-* Si se resuelve el rompecabezas, el juego termina.
-* Si el jugador no tiene más paracaídas, el juego termina.
+* The puzzle is a secret word randomly chosen from a list.
+* The player guesses a letter in the puzzle.
+* If the guess is correct, the letter is revealed.
+* If the guess is incorrect, a line is cut on the player's parachute.
+* If the puzzle is solved the game is over.
+* If the player has no more parachute the game is over.
 
 ---
 ## Getting Started

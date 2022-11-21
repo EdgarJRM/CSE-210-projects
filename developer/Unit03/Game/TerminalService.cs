@@ -24,10 +24,10 @@ namespace Unit03.Game
         /// </summary>
         /// <param name="prompt">The given prompt.</param>
         /// <returns>Inputted number.</returns>
-        public int ReadNumber(string prompt)
+        public string ReadNumber(string prompt)
         {
             string rawValue = ReadText(prompt);
-            return int.Parse(rawValue, System.Globalization.CultureInfo.InvariantCulture);
+            return rawValue;
         }
 
         /// <summary>

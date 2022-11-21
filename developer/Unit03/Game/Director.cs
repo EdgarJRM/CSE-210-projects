@@ -38,9 +38,9 @@ namespace Unit03.Game
         /// </summary>
         private void GetInputs()
         {
-            _terminalService.WriteText(_hider._location.ToString());
-            int location = _terminalService.ReadNumber("\nEnter a location [1-1000]: ");
-            _seeker.MoveLocation(location);
+            _terminalService.WriteText(_hider._word.ToString());
+            string letter = _terminalService.ReadText("\nGuess a letter [a-z]: ");
+            _seeker.MoveLocation(letter);
         }
 
         /// <summary>

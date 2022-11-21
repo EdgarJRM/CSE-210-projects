@@ -11,33 +11,32 @@ namespace Unit03.Game
     /// </summary>
     public class Seeker
     {
-        private int _location = 0;
+        private string _letter = "";
 
         /// <summary>
         /// Constructs a new instance of Seeker.
         /// </summary>
         public Seeker()
         {
-            Random random = new Random();
-            _location = random.Next(1001);
+            _letter = "temple";
         }
 
         /// <summary>
         /// Gets the current location.
         /// </summary>
         /// <returns>The current location.</returns>
-        public int GetLocation()
+        public string GetLetter()
         {
-            return _location;
+            return _letter;
         }
 
         /// <summary>
         /// Moves to the given location.
         /// </summary>
         /// <param name="location">The given location.</param>
-        public void MoveLocation(int location)
+        public void MoveLocation(string letter)
         {
-            this._location = location;
+            this._letter = letter;
         }
 
     }
