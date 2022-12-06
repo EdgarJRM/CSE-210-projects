@@ -17,6 +17,8 @@ namespace Unit04.Game.Casting
         private Color _color = new Color(255, 255, 255); // white
         private Point _position = new Point(0, 0);
         private Point _velocity = new Point(0, 0);
+        private int _valueArtifact = 0;
+        
 
         /// <summary>
         /// Constructs a new instance of Actor.
@@ -70,10 +72,30 @@ namespace Unit04.Game.Casting
             return _velocity;
         }
 
+
+        /// <summary>
+        /// Gets the actor's current value. Obtiene el puntaje del artefacto para determinar suma o resta puntos
+        /// </summary>
+        /// <returns>The velocity.</returns>
+        public int GetValue(){
+            return _valueArtifact;
+        }
+
+        public int GetPointY(){
+
+            return _position.GetY();
+        }
+        public int GetPointX(){
+
+            return _position.GetX();
+        }
+
+
         /// <summary>
         /// Moves the actor to its next position according to its velocity. Will wrap the position 
         /// from one side of the screen to the other when it reaches the maximum x and y 
-        /// values.
+        /// values
+        /// Mueve al actor a su siguiente posición de acuerdo a su velocidad. Envolverá la posición
         /// </summary>
         /// <param name="maxX">The maximum x value.</param>
         /// <param name="maxY">The maximum y value.</param>
@@ -154,6 +176,13 @@ namespace Unit04.Game.Casting
                 throw new ArgumentException("velocity can't be null");
             }
             this._velocity = velocity;
+        }
+
+
+         /// Para Asigna el valor correspondiente roca -10 y 10 puntos si es gema
+        public void SetValue(int value)
+        {
+            this._valueArtifact = value;
         }
 
     }
