@@ -31,7 +31,7 @@ namespace Unit06.Game.Services
             foreach (string filepath in filepaths)
             {
                 Raylib_cs.Sound sound = Raylib.LoadSound(filepath);
-                _sounds[filepath] = sound;
+                _sounds[Path.GetFileName(filepath)] = sound;
             }
         }
  
@@ -39,9 +39,9 @@ namespace Unit06.Game.Services
         public void PlaySound(Casting.Sound sound)
         {
             string filename = sound.GetFilename();
-            if (_sounds.ContainsKey(filename))
+            if (_sounds.ContainsKey(Path.GetFileName(filename)))
             {
-                Raylib_cs.Sound raylibSound = _sounds[filename];
+                Raylib_cs.Sound raylibSound = _sounds[Path.GetFileName(filename)];
                 Raylib.PlaySound(raylibSound);
             }
         }
